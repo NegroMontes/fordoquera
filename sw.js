@@ -45,7 +45,6 @@ self.addEventListener('fetch', ev => {
     ev.respondWith(req.mode === 'navigate' ? redPrimero(req, new Request(new URL('./', location.href).href)) : redPrimero(req));
     return;
   }
-  if (u.hostname === 'api.github.com' || u.hostname === 'raw.githubusercontent.com') { ev.respondWith(redPrimero(req)); return; }   // tus espacios y libros (con la llave)
   if (/(^|\.)(cdnjs\.cloudflare\.com|cdn\.jsdelivr\.net|unpkg\.com|fonts\.googleapis\.com|fonts\.gstatic\.com|www\.gstatic\.com)$/.test(u.hostname)
       || (u.hostname.endsWith('github.io') && /\/espacios\/archivos\//.test(u.pathname))) { ev.respondWith(guardadoPrimero(req)); return; }
 });
